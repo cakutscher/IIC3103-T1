@@ -72,7 +72,7 @@ class FeedsController < ApplicationController
 
   def home_ad
     @feeds = Feed.all
-    @feed_sort = Feed.order('created_at DESC').take(10)
+    @feed_sort = Feed.order('created_at DESC')
   end
 
 
