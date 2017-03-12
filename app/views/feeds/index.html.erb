@@ -1,31 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+
+</html>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Feeds</h1>
+<h1>Noticias</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Bajada</th>
-      <th>Cuerpo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @feed_sort.try(:each) do |feed| %>
+    <body>
+    <table width="400", max-width="400" >
       <tr>
-        <td><%= feed.titular %></td>
-        <td><%= feed.bajada %></td>
-        <td><%= feed.cuerpo %></td>
-        <td><%= feed.ncomentarios %></td>
-        <td><%= link_to 'Ir', feed %></td>
-        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <tr><th><%= feed.titular %></th></tr>
+        <tr><td><br><%= feed.bajada %></br></td></tr>
+        <p align="justify"> <tr><td><br><%= truncate(feed.cuerpo, length: 1002) %></td></tr></p>
+        <tr><td><%= feed.ncomentarios %></br></td></tr>
+        <tr><td><%= link_to 'Ir', feed %></td></tr>
+        <tr><td><%= link_to 'Edit', edit_feed_path(feed) %></td></tr>
+        <tr><td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr>
+        <br></br>
       </tr>
+    </table>
+    </body>
+
+
     <% end %>
-  </tbody>
-</table>
+
 
 <br>
 
