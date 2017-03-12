@@ -15,6 +15,7 @@ class FeedsController < ApplicationController
   # GET /feeds/new
   def new
     @feed = Feed.new
+    @feed.ncomentarios = 0
   end
 
   # GET /feeds/1/edit
