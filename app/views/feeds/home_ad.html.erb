@@ -13,7 +13,7 @@ table, th, td {
 <p id="notice"><%= notice %></p>
 <br></br>
 <h1>Noticias</h1>
-<%= link_to 'Ingresar como administrador', {:controller => 'feeds', :action => 'home_ad'} %>
+<%= link_to 'Volver a usuario', feeds_path %>
 
 
     <% @feed_sort.try(:each) do |feed| %>
@@ -23,8 +23,9 @@ table, th, td {
         <tr><th><%= feed.titular %></th></tr>
         <tr><td><br><%= feed.bajada %></br></td></tr>
         <p align="justify"> <tr><td><br><%= truncate(feed.cuerpo, length: 1002) %></td></tr></p>
-        <tr><td>Comentarios: <%= Comment.where(feed_id: feed.id).count %></br></td></tr>
-        <tr><td><%= link_to 'Ver más', feed %></td></tr>
+        <tr><td>Comentarios: <%= feed.ncomentarios %></br></td></tr>
+        <tr><td><%= link_to 'Edit', edit_feed_path(feed) %></td></tr>
+        <tr><td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr>
         <br></br>
       </tr>
     </table>
@@ -35,3 +36,5 @@ table, th, td {
 
 
 <br>
+
+<%= link_to 'New Feed', new_feed_path %>

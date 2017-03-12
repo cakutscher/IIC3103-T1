@@ -8,6 +8,7 @@ class FeedsController < ApplicationController
     @feed_sort = Feed.order('created_at DESC').take(10)
   end
 
+
   # GET /feeds/1
   # GET /feeds/1.json
   def show
@@ -69,6 +70,12 @@ class FeedsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def home_ad
+    @feeds = Feed.all
+    @feed_sort = Feed.order('created_at DESC').take(10)
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -17,7 +17,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comment.feed_id = params[:id]
     @feed = Feed.find(params[:id])
-    @feed.update_attribute(:ncomentarios, @feed.ncomentarios+1 )
     #@comment.feed_id = @feed.id
     #@comment = @feed.comments.new No funciona
   end
