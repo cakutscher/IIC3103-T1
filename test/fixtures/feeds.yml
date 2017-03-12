@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titular: MyString
+  bajada: MyString
+  cuerpo: MyText
+  ncomentarios: 
+
+two:
+  titular: MyString
+  bajada: MyString
+  cuerpo: MyText
+  ncomentarios: 
