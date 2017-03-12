@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @comments.each do |comment| %>
+    <% @comments.try(:each) do |comment| %>
       <tr>
         <td><%= comment.nombre %></td>
         <td><%= comment.contenido %></td>

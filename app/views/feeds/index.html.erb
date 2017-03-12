@@ -5,22 +5,21 @@
 <table>
   <thead>
     <tr>
-      <th>Titular</th>
+      <th>Titulo</th>
       <th>Bajada</th>
       <th>Cuerpo</th>
-      <th>Ncomentarios</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @feeds.each do |feed| %>
+    <% @feed_sort.try(:each) do |feed| %>
       <tr>
         <td><%= feed.titular %></td>
         <td><%= feed.bajada %></td>
         <td><%= feed.cuerpo %></td>
         <td><%= feed.ncomentarios %></td>
-        <td><%= link_to 'Show', feed %></td>
+        <td><%= link_to 'Ir', feed %></td>
         <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
         <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

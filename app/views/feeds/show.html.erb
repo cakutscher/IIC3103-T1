@@ -1,23 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Titular:</strong>
-  <%= @feed.titular %>
+  <font style="text-transform: uppercase;">
+  <strong><%= @feed.titular %></strong>
+  <br>_________________________________________________________</br>
 </p>
 
 <p>
-  <strong>Bajada:</strong>
-  <%= @feed.bajada %>
+  <font style="text-transform: none;">
+  <strong><%= @feed.bajada %></strong>
+  <br>_________________________________________________________________________________________________________________________________________________________</br>
 </p>
 
 <p>
-  <strong>Cuerpo:</strong>
   <%= @feed.cuerpo %>
+  <br>_________________________________________________________________________________________________________________________________________________________</br>
 </p>
 
 <p>
-  <strong>Ncomentarios:</strong>
-  <%= @feed.ncomentarios %>
+  <strong>Comentarios</strong>
+  <tbody>
+    <% @comm.try(:each) do |com| %>
+      <br>
+        <br><u><strong><%= com.nombre %></strong></u></br>
+        <%= com.contenido %>
+      </br>
+    <% end %>
+  </tbody>
+  <!--<%= link_to 'New Comment', new_comment_path(@feed) %>-->
+  <!--<%= link_to 'New Comment', {:controller => 'comments', :action => 'new', :id => @feed.id} %>-->
+<br>
+  <%= link_to 'Deja tu comentario acá', {:controller => 'comments', :action => 'new', :id => @feed} %>
+</br>
 </p>
 
 <%= link_to 'Edit', edit_feed_path(@feed) %> |

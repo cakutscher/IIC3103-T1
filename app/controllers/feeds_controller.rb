@@ -5,11 +5,13 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all
+    @feed_sort = Feed.order('created_at DESC').take(10)
   end
 
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+    @comm = Comment.where(feed_id: @feed.id)
   end
 
   # GET /feeds/new
@@ -55,6 +57,12 @@ class FeedsController < ApplicationController
   # DELETE /feeds/1
   # DELETE /feeds/1.json
   def destroy
+    @comm = Comment.where(feed_id: @feed.id)
+
+    @comm.each do |c|
+      c.destroy
+    end
+
     @feed.destroy
     respond_to do |format|
       format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
