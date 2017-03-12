@@ -18,7 +18,6 @@ class FeedsController < ApplicationController
   # GET /feeds/new
   def new
     @feed = Feed.new
-    @feed.ncomentarios = 0
   end
 
   # GET /feeds/1/edit
@@ -85,6 +84,6 @@ class FeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
-      params.require(:feed).permit(:titular, :bajada, :cuerpo, :ncomentarios)
+      params.require(:feed).permit(:titular, :bajada, :cuerpo)
     end
 end
