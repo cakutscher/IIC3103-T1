@@ -17,8 +17,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comment.feed_id = params[:id]
     @feed = Feed.find(params[:id])
-    #@comment.feed_id = @feed.id
-    #@comment = @feed.comments.new No funciona
   end
 
   # GET /comments/1/edit

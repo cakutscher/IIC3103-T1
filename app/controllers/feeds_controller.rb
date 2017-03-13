@@ -5,14 +5,18 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all
-    @feed_sort = Feed.order('created_at DESC').take(10)
+    @recent_feed = Feed.most_recent(10)
   end
 
+  def home_ad
+    @feeds = Feed.all
+    @recent_feed = Feed.most_recent(nil)
+  end
 
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-    @comm = Comment.where(feed_id: @feed.id)
+    @comm = Comment.take_comments(@feed)
   end
 
   # GET /feeds/new
@@ -31,7 +35,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.html { redirect_to home_home_ad_path, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new }
@@ -57,7 +61,7 @@ class FeedsController < ApplicationController
   # DELETE /feeds/1
   # DELETE /feeds/1.json
   def destroy
-    @comm = Comment.where(feed_id: @feed.id)
+    @comm = Comment.take_comments(@feed)
 
     @comm.each do |c|
       c.destroy
@@ -68,11 +72,6 @@ class FeedsController < ApplicationController
       format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def home_ad
-    @feeds = Feed.all
-    @feed_sort = Feed.order('created_at DESC')
   end
 
 
