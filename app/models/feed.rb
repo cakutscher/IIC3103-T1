@@ -8,4 +8,8 @@ class Feed < ApplicationRecord
     order("created_at desc").limit(limit)
   end
 
+  def short_description
+    self.cuerpo.truncate(1002)
+  end
+
 end
