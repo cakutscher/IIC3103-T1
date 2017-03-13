@@ -69,7 +69,7 @@ class FeedsController < ApplicationController
 
     @feed.destroy
     respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
+      format.html { redirect_to home_home_ad_path, notice: 'Feed was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
