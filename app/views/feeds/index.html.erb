@@ -12,19 +12,20 @@ table, th, td {
 
 <p id="notice"><%= notice %></p>
 <br></br>
-<h1>Noticias</h1>
+<h1>NOTICIAS</h1>
 <%= link_to 'Ingresar como administrador', {:controller => 'feeds', :action => 'home_ad'} %>
 
 
     <% @recent_feed.try(:each) do |feed| %>
     <body>
-    <table width="400", style= "background-color: #D0DCD1" >
+    <table width="500", style= "background-color: #EFF5F6">
       <tr>
-        <tr><th><%= feed.titular %></th></tr>
-        <tr><td><%= feed.bajada %></td></tr>
+        <tr><th><font size = "5"><%= feed.titular %></font></th></tr>
+        <tr><td><font size = "4"><%= feed.bajada %></font></td></tr>
         <p align="justify"> <tr><td><%= feed.created_at %> : <br><%= feed.short_description %></td></tr></p>
         <tr><td>Comentarios: <%= Comment.count_comments(feed) %></br></td></tr>
         <tr><td><%= link_to 'Ver más', feed %></td></tr>
+
         <br></br>
       </tr>
     </table>
