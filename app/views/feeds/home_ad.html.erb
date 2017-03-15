@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table, th, td {
-    border: 1px solid black;
-}
-</style>
 </head>
 
 </html>
 
 <p id="notice"><%= notice %></p>
 <br></br>
-<h1>Noticias</h1>
-<%= link_to 'Volver a usuario', feeds_path %>
+<h1>NOTICIAS</h1>
 
-
+<table>
+  <thead>
+    <tr>
+      <th>Titular</th>
+      <th>Fecha</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @recent_feed.try(:each) do |feed| %>
-    <body>
-    <table width="400", style= "background-color: #D0DCD1" >
+
+
+
       <tr>
-        <tr><th><%= feed.titular %></th></tr>
-        <tr><td><%= feed.bajada %></td></tr>
-        <p align="justify"> <tr><td><%= feed.created_at %> : <br><%= feed.cuerpo %></td></tr></p>
-        <tr><td>Comentarios: <%= Comment.count_comments(feed) %></br></td></tr>
-        <tr><td><%= link_to 'Edit', edit_feed_path(feed) %></td></tr>
-        <tr><td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr>
-        <br></br>
+        <td><%= feed.titular %></td>
+        <p align="justify"> <td><%= feed.created_at %> </td></p>
+        <td><%= link_to 'Ver', feed %></td>
+        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </table>
-    </body>
+
+
+
 
 
     <% end %>
 
+      </tbody>
+    </table>
+
 
 <br>
 
-<%= link_to 'New Feed', new_feed_path %>
+<%= link_to 'NUEVA NOTICIA', new_feed_path %>
