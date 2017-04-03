@@ -5,6 +5,10 @@ application up and running.
 
 Things you may want to cover:
 
+```
+probando
+```
+
 * Ruby version
 
 * System dependencies
