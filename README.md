@@ -1,28 +1,18 @@
-# README
+== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Set up ejecución local
 
-Things you may want to cover:
-
-```
-probando
+```shell
+bundle install
 ```
 
-* Ruby version
+### Configuracion
+Configurar database.yml, con username y password de psql.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Database
+```shell
+bundle exec rake db:create:all
+bundle exec rake db:migrate
+bundle exec rake db:seed
+```
+En /login ingresar con "spree@example.com", "spree123"
